@@ -2,6 +2,7 @@ package com.example.pfe.service.impl;
 
 
 import com.example.pfe.bean.BudjetDetail;
+import com.example.pfe.bean.Commande;
 import com.example.pfe.dao.BudjetDetailDao;
 import com.example.pfe.service.facade.BudjetDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,4 +52,32 @@ public class BudjetDetailServiceImpl implements BudjetDetailService {
     public List<BudjetDetail> findByAll() {
         return budjetDetailDao.findAll();
     }
+
+    @Override
+    public int payer(String type, Double mtFctPayer, Double mtFctAffecter) {
+       BudjetDetail budjetDetail = budjetDetailDao.findByType(type);
+        if (budjetDetail == null){
+            return -1;
+    } else if (budjetDetail.getMtFctAffecter() < mtFctPayer){
+                return -2;
+            } else {
+                Double nvMtFctAffecter = budjetDetail.getMtFctAffecter() - mtFctPayer;
+                budjetDetail.setMtFctAffecter(nvMtFctAffecter);
+                return 1;
+            }
+        }
+
+    @Override
+    public int reserver(String type, Double mtFctRes, Double mtFctAffecter) {
+        BudjetDetail budjetDetail = budjetDetailDao.findByType(type);
+        if (budjetDetail == null) {
+            return -1;
+        } else {
+            Double nvMtFctAffecter = budjetDetail.getMtFctAffecter() + mtFctRes;
+            budjetDetail.setMtFctAffecter(nvMtFctAffecter);
+            return 1;
+        }
+    }
+
+
 }

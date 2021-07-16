@@ -20,8 +20,6 @@ public interface BudjetService {
 
     List<Budjet> findByFactureLibelle (String libelle);
 
-    List<Budjet> findByFactureTotalAndPrix (Double total, Double prix);
-
     int deleteByDateFacture (Date dateFacture);
 
     int deleteByDateFacture (List<Budjet>budjets);

@@ -41,10 +41,6 @@ public class BudjetServiceImpl implements BudjetService {
         return budjetDao.findByFactureLibelle(libelle);
     }
 
-    @Override
-    public List<Budjet> findByFactureTotalAndPrix(Double total, Double prix) {
-        return budjetDao.findByFactureTotalAndPrix(total, prix);
-    }
 
     @Override
     @Transactional

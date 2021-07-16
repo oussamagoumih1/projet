@@ -18,8 +18,9 @@ public class FactureServiceImpl implements FactureService {
 
     @Override
     public Facture findByLibelle(String libelle) {
-        return null;
+        return factureDao.findByLibelle(libelle);
     }
+
 
     @Override
     public Facture save(Facture facture) {

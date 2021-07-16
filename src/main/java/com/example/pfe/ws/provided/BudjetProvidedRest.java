@@ -36,10 +36,7 @@ public class BudjetProvidedRest {
     public List<Budjet> findByFactureLibelle(String libelle) {
         return budjetService.findByFactureLibelle(libelle);
     }
-@GetMapping("/facture/total/{total},/facture/prix/{prix}")
-    public List<Budjet> findByFactureTotalAndPrix(Double total, Double prix) {
-        return budjetService.findByFactureTotalAndPrix(total, prix);
-    }
+
 @DeleteMapping("/dateFacture/{dateFacture}")
     public int deleteByDateFacture(@PathVariable Date dateFacture) {
         return budjetService.deleteByDateFacture(dateFacture);

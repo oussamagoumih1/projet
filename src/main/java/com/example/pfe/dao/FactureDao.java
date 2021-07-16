@@ -16,7 +16,7 @@ public interface FactureDao extends JpaRepository <Facture, Long> {
 
     Facture findByClientName (String clientName);
 
-    Facture findByTotalAndPrix(Double total, Double prix);
+    List<Facture> findByTotalAndPrix(Double total, Double prix);
 
     Facture deleteByClientName (String clientName);
 
